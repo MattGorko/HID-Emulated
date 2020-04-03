@@ -1,3 +1,7 @@
+################
+#    Project   #
+################
+
 project('hid-emulated',
         'cpp',
         version: '0.0.1',
@@ -5,8 +9,16 @@ project('hid-emulated',
         license: 'GPL2',
         default_options:
         ['warning_level=3',
-        'werror=true'])
+        'werror=true',
+        'cpp_std=c++17'])
 
+################
+#     Files    #
+################
+
+uiloc = join_paths(get_option('prefix'),
+          get_option('datadir'),
+          'ui')
 
 ################
 #   Compiler   #
@@ -29,14 +41,13 @@ add_project_arguments(
     '-Wmissing-format-attribute',
     '-Wnested-externs',
     '-Wpointer-arith',
-    '-Wredundant-decls',
     '-Wnested-externs',
-    '-Wundef',
     '-Wunreachable-code',
     '-Wunused-parameter',
     '-Wwrite-strings',
   ]),
   '-D_GNU_SOURCE',
+  '-DUI_DIR="@0@"'.format(uiloc),
   language: 'cpp'
 )
 
@@ -44,6 +55,49 @@ add_project_arguments(
 # Dependencies #
 ################
 
-gtk = dependency('gtk+-3.0', version: '>= 3.24.00')
+gtkmm = dependency('gtkmm-3.0', version: '>= 3.20.00', required: true)
 
-executable('hid-emulated', 'src/main.cc')
+################
+#  Executable  #
+################
+
+executable('hid-emulated', 'gtk/app.cc',
+  dependencies: gtkmm,
+  install: true,
+)
+
+################
+#    Install   #
+################
+
+install_subdir('gtk/ui', install_dir : get_option('datadir'))
+
+################
+#     Tests    #
+################
+
+# TODO
+
+################
+#     Doc      #
+################
+
+# TODO
+
+################
+#   Coverage   #
+################
+
+# TODO
+
+################
+#  Sanitizers  #
+################
+
+# TODO
+
+################
+#  Scan-build  #
+################
+
+# TODO
