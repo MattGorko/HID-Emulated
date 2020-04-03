@@ -55,7 +55,8 @@ add_project_arguments(
 # Dependencies #
 ################
 
-gtkmm = dependency('gtkmm-3.0', version: '>= 3.20.00', required: true)
+gtkmm = dependency('gtkmm-3.0',
+  version: '>= 3.20.00', required: true)
 
 ################
 #  Executable  #
@@ -76,7 +77,15 @@ install_subdir('gtk/ui', install_dir : get_option('datadir'))
 #     Tests    #
 ################
 
-# TODO
+criterion = dependency('criterion',
+  version: '>= 2.3.0', required : false)
+
+if not criterion.found()
+  error('Skip test: criterion not installed.')
+else
+  subdir('tests')
+endif
+
 
 ################
 #     Doc      #
