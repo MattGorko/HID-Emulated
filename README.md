@@ -11,6 +11,10 @@ Software that monitors and emulates HID devices.
 
 # Building
 
+```shell
+meson bin
+ninja -C bin
+```
 
 # License
 
