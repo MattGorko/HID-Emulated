@@ -18,6 +18,11 @@ ninja -C bin
 ninja -C bin install
 ```
 
+Test the project:
+```shell
+ninja -C test
+```
+
 Generate doc:
 ```shell
 meson bin
