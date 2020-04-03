@@ -14,6 +14,7 @@ Software that monitors and emulates HID devices.
 ```shell
 meson bin
 ninja -C bin
+ninja -C bin install
 ```
 
 # License
