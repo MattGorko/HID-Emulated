@@ -62,7 +62,10 @@ gtkmm = dependency('gtkmm-3.0',
 #  Executable  #
 ################
 
-executable('hid-emulated', 'gtk/app.cc',
+executable('hid-emulated',
+  'gtk/app.cc',
+  'gtk/mainwindow.cc',
+  'gtk/maintoolbar.cc',
   dependencies: gtkmm,
   install: true,
 )
