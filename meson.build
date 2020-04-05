@@ -57,16 +57,21 @@ add_project_arguments(
 
 gtkmm = dependency('gtkmm-3.0',
   version: '>= 3.20.00', required: true)
+libudev = dependency('libudev',
+  version: '>= 242', required: true)
 
 ################
 #  Executable  #
 ################
 
-executable('hid-emulated',
+executable('hid-emulated', [
   'gtk/app.cc',
   'gtk/mainwindow.cc',
   'gtk/maintoolbar.cc',
-  dependencies: gtkmm,
+  'src/hiddevice.cc',
+  'src/hidmonitor.cc',
+  ],
+  dependencies: [gtkmm, libudev],
   install: true,
 )
 
