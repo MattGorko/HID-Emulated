@@ -6,27 +6,27 @@ Software that monitors and emulates HID devices.
 # Usage
 
 ```shell
-./hid-emulated
+$ ./hid-emulated
 ```
 
 # Building
 
 Build and install the project:
 ```shell
-meson bin
-ninja -C bin
-ninja -C bin install
+$ meson bin
+$ ninja -C bin
+$ ninja -C bin install
 ```
 
 Test the project:
 ```shell
-ninja -C test
+$ ninja -C test
 ```
 
 Generate doc:
 ```shell
-meson bin
-ninja -C bin doc
+$ meson bin
+$ ninja -C bin doc
 ```
 
 # License
